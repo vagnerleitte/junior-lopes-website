@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Container } from './container';
+import { BrandLogo } from '@/components/ui/brand-logo';
 import { navigation, siteConfig } from '@/config/site';
 
 export function Footer() {
@@ -7,9 +8,10 @@ export function Footer() {
     <footer className="bg-surface border-t py-12">
       <Container className="grid gap-10 md:grid-cols-3">
         <div>
-          <p className="font-display text-petroleum-900 text-lg font-bold">
-            Junior Lopes
-          </p>
+          <div className="font-display text-petroleum-900 flex items-center gap-3 text-lg font-bold">
+            <BrandLogo className="h-12" />
+            <span>Junior Lopes</span>
+          </div>
           <p className="mt-3 max-w-xs text-sm leading-6 text-zinc-500">
             Atendimento jurídico especializado, ético e próximo.
           </p>
