@@ -5,7 +5,9 @@ const serverSchema = z.object({
   INSTAGRAM_APP_SECRET: z.string().optional(),
   INSTAGRAM_ACCESS_TOKEN: z.string().optional(),
   GOOGLE_MAPS_API_KEY: z.string().optional(),
-  NEXT_PUBLIC_SITE_URL: z.url().default('https://niltonjuniorlopes.adv.br'),
+  NEXT_PUBLIC_SITE_URL: z
+    .url()
+    .default('https://junior-lopes-advocacia.niltonjuniorlopes.workers.dev'),
 });
 
 export const env = serverSchema.parse({
