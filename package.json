@@ -9,6 +9,9 @@
     "typecheck": "pnpm --filter website typecheck",
     "test": "pnpm --filter website test",
     "test:e2e": "pnpm --filter website test:e2e",
+    "preview:cloudflare": "pnpm --filter website preview:cloudflare",
+    "deploy:cloudflare": "pnpm --filter website deploy:cloudflare",
+    "cf-typegen": "pnpm --filter website cf-typegen",
     "prepare": "husky"
   },
   "devDependencies": {

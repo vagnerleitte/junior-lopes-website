@@ -43,3 +43,15 @@ O formulário usa Server Action e uma interface `ContactService`; substitua `Con
 ## Render
 
 O `render.yaml` e o `Dockerfile` usam o output standalone do Next. Crie um Web Service a partir do Blueprint, configure as variáveis no painel e valide domínio, HTTPS e metadados antes de publicar.
+
+## Cloudflare Workers
+
+O site também pode ser executado como uma aplicação full-stack no Cloudflare Workers com o adaptador OpenNext. Isso preserva Server Actions, cache do feed do Instagram e otimização de imagens.
+
+```bash
+pnpm cf-typegen
+pnpm preview:cloudflare
+pnpm deploy:cloudflare
+```
+
+Antes do deploy, autentique o Wrangler com `pnpm --filter website exec wrangler login`. Configure `NEXT_PUBLIC_SITE_URL` como variável de build e cadastre os valores sensíveis com `wrangler secret put`, executado em `apps/website`.
