@@ -4,6 +4,7 @@ export const siteConfig = {
   description:
     'Junior Lopes, advogado civil, com atendimento jurídico personalizado em Tupã.',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://niltonjuniorlopes.adv.br',
+  socialImage: '/images/junior-institucional.png',
   email: 'contato@juniorlopes.adv.br',
   phone: '+55 14 99776-9758',
   whatsapp: '5514997769758',

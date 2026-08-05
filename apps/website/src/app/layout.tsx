@@ -4,6 +4,7 @@ import { Footer } from '@/components/layout/footer';
 import { Navbar } from '@/components/layout/navbar';
 import { JsonLd } from '@/components/ui/json-ld';
 import { siteConfig } from '@/config/site';
+import { socialImageMetadata } from '@/lib/metadata';
 import '@/styles/globals.css';
 
 const inter = Inter({
@@ -21,6 +22,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: { default: siteConfig.name, template: `%s | ${siteConfig.shortName}` },
   description: siteConfig.description,
+  openGraph: {
+    images: [socialImageMetadata],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: [socialImageMetadata],
+  },
   robots: { index: true, follow: true },
   icons: { icon: '/favicon.ico' },
 };
@@ -34,6 +42,7 @@ export default function RootLayout({
       '@type': ['Organization', 'LegalService', 'LocalBusiness'],
       name: siteConfig.name,
       url: siteConfig.url,
+      image: new URL(siteConfig.socialImage, siteConfig.url).toString(),
       email: siteConfig.email,
       telephone: siteConfig.phone,
       address: {
@@ -46,6 +55,7 @@ export default function RootLayout({
       '@context': 'https://schema.org',
       '@type': 'Attorney',
       name: 'Junior Lopes',
+      image: new URL(siteConfig.socialImage, siteConfig.url).toString(),
       worksFor: { '@type': 'Organization', name: siteConfig.name },
       url: siteConfig.url,
     },
