@@ -1,0 +1,69 @@
+import type { Metadata } from 'next';
+import { Inter, Montserrat } from 'next/font/google';
+import { Footer } from '@/components/layout/footer';
+import { Navbar } from '@/components/layout/navbar';
+import { JsonLd } from '@/components/ui/json-ld';
+import { siteConfig } from '@/config/site';
+import '@/styles/globals.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: { default: siteConfig.name, template: `%s | ${siteConfig.shortName}` },
+  description: siteConfig.description,
+  robots: { index: true, follow: true },
+  icons: { icon: '/favicon.ico' },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  const schemas = [
+    {
+      '@context': 'https://schema.org',
+      '@type': ['Organization', 'LegalService', 'LocalBusiness'],
+      name: siteConfig.name,
+      url: siteConfig.url,
+      email: siteConfig.email,
+      telephone: siteConfig.phone,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: siteConfig.address,
+        addressCountry: 'BR',
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Attorney',
+      name: 'Junior Lopes',
+      worksFor: { '@type': 'Organization', name: siteConfig.name },
+      url: siteConfig.url,
+    },
+  ];
+  return (
+    <html lang="pt-BR">
+      <body className={`${inter.variable} ${montserrat.variable} antialiased`}>
+        <JsonLd data={schemas} />
+        <a
+          href="#conteudo"
+          className="sr-only z-[100] bg-white p-3 focus:not-sr-only focus:fixed focus:left-3 focus:top-3"
+        >
+          Pular para o conteúdo
+        </a>
+        <Navbar />
+        <main id="conteudo">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

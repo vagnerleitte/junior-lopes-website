@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: junior-lopes-advocacia
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    autoDeployTrigger: commit
+    envVars:
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
+      - key: INSTAGRAM_ACCESS_TOKEN
+        sync: false
+      - key: GOOGLE_MAPS_API_KEY
+        sync: false
