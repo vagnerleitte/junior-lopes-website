@@ -38,9 +38,15 @@ export function Footer() {
           </Link>
         </div>
       </Container>
-      <Container className="mt-10 border-t pt-6 text-xs text-zinc-500">
-        © {new Date().getFullYear()} Junior Lopes Advocacia. {siteConfig.oab}.
-        Conteúdo meramente informativo.
+      <Container className="mt-10 flex flex-col gap-3 border-t pt-6 text-xs text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
+        <p>
+          © {new Date().getFullYear()} Junior Lopes Advocacia. {siteConfig.oab}.
+          Conteúdo meramente informativo.
+        </p>
+        <p className="shrink-0">
+          Powered by{' '}
+          <span className="font-semibold text-zinc-700">Vagner Leitte</span>
+        </p>
       </Container>
     </footer>
   );
